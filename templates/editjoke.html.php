@@ -28,13 +28,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
-    <?php var_dump($joke)?>
-    <?php var_dump($userId)?>
-            
+<body>    
     <form action="index.php?route=joke/edit" method="post">
         <input type="hidden" name="joke[id]"
-        value="<?=$id ?? ''?>">
+        value="<?=$joke['id'] ?? ''?>">
         <label for="joketext">Type your joke here: 
         </label>
         <textarea id="joketext" name="joke[joketext]" rows="3"

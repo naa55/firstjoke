@@ -97,9 +97,8 @@ class Joke {
             }
             $title = 'Edit joke';
 
-   
             return ['template' => 'editjoke.html.php',
-            'title' => $title, 'variables'=>['joke'=>$joke ?? null, 'id'=>$_POST['id'], 'userId'=>$author['id'] ?? null]];
+            'title' => $title, 'variables'=>['joke'=>$joke ?? null, 'userId'=>$author['id'] ?? null]];
         
     } 
 
