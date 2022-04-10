@@ -14,7 +14,6 @@ class Edit {
         $this->authorsTable = $authorsTable;
     }
     public function edit() {
-        var_dump($_GET['id']);
         if (isset($_GET['id'])) {
             $joke = $this->jokesTable->findById($_GET['id']);
         }

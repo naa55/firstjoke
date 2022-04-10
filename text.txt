@@ -163,3 +163,26 @@ private function processDates($fields)
         }
         }
         }
+
+        //NAVBAR
+          <nav class="navbar">
+        <header>
+            <h1>Internet Joke Database</h1>
+        </header>
+            <ul class="list">
+            <li><a
+            href="/">Home</a></li>
+            <li><a href="/joke/list">Jokes List</a></li>
+            <li><a href="/joke/edit">Add a new Joke</a></li>
+            <li><a href="/profile/edit">Create Profile</a></li>
+            <li><a href="/profile/my">View Profile</a></li>
+            <li><a href="/joke/favlist">Fav</a></li>
+            <?php if ($loggedIn): ?>
+                    </li>
+                    <li><a href="/logout">Log out</a>
+                    </li>
+                <?php else: ?>
+                    <li><a href="/login">Log in</a></li>
+                <?php endif; ?>
+            </ul>
+        </nav>

@@ -1,30 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-<?php
-if (isset($error)):
-    echo '<div class="errors">' . $error . '</div>';
-endif;
-?>
 
+    <?php
+    if (isset($error)):
+        echo '<div class="errors alert alert-danger mt-5  alert-dismissible"><button type="button" class="btn-close" data-bs-dismiss="alert"></button><strong>' . $error . '</strong></div>';
+    endif;
+    ?>
+    <div class="w-50 border border-3 m-auto p-5 mt-5">
+         <form method="post" action="">
+             <div class="mb-3 mt-3">
+                <label for="email" class="form-label">Email:</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password:</label>
+                <input type="password" class="form-control" id="password" placeholder="Enter password" name="password">
+            </div>
+                    <!-- <div class="mb-3">
+                       <label for="comment">Comments:</label>
+                       <textarea class="form-control" rows="5" id="comment" name="text"></textarea>
+                    </div> -->
+            <button type="submit" name="login" value="log in" class="btn btn-primary">Submit</button>
+            <p>Don't have an account? <a href="/author/register">Click here to register an
+        </form>
+    </div>
 
-<form method="post" action="">
-    <label for="email">Your email address</label>
-        <input type="text" id="email" name="email">
-        <br>
-    <label for="password">Your password</label>
-        <input type="password" id="password" name="password">
-        <br>
-    <input type="submit" name="login" value="Log in">
-</form>
-<p>Don't have an account? <a
- href="index.php?route=author/register">Click here to register an
-account</a></p>
-</body>
-</html>

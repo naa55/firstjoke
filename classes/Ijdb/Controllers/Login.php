@@ -13,7 +13,7 @@ class Login {
 
     public function processLogin() {
         if($this->authentication->login($_POST['email'], $_POST['password'])) {
-            header('location: index.php?route=login/success');
+            header('location: /login/success');
         } else {
             return ['template' => 'login.html.php',
             'title' => 'Log In','variables' => [
@@ -37,8 +37,13 @@ class Login {
         => 'You are not logged in'];
     }
 
+    public function access() {
+        return ['template' => 'accesserror.html.php', 'title'
+        => 'Access Denialed'];
+    }
+
     public function logout() {
-        unset($_SESSION);
+        session_unset();
         return ['template' => 'logout.html.php','title' => 'You have been logged out'];
     }
 }

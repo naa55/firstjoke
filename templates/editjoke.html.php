@@ -1,42 +1,28 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <form action="" method="post">
-        <input type="hidden" name="joke[id]"
-        value="<?php $joke['id'] ?? ''?>">
-        <label for="joketext">Type your joke here:
-        </label>
-        <textarea id="joketext" name="joke[joketext]" rows="3"
-        cols="40"><?=$joke['joketext'] ?? ''?></textarea>
-        <input type="submit" name="submit" value="Save">
-    </form>
-</body>
-</html> -->
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>    
-    <form action="index.php?route=joke/edit" method="post">
-        <input type="hidden" name="joke[id]"
-        value="<?=$joke['id'] ?? ''?>">
-        <label for="joketext">Type your joke here: 
-        </label>
-        <textarea id="joketext" name="joke[joketext]" rows="3"
-        cols="40"><?=$joke['joketext'] ?? ''?></textarea>
-        <input type="submit" name="submit" value="Save">
-    </form>
-</body>
-</html>
+<div>
+    <?php if (empty($joke->id) || $userId == $joke->authorid):?>
+        <form action="" method="post">
+        <input type="hidden" name="joke[id]" value="<?=$joke->id ?? ''?>">
+          <div class="w-50 mt-5 ms-5 mb-5">
+          <label for="joketext" class="form-label">Type your joke here:</label>
+            <textarea id="joketext" class="form-control" name="joke[joketext]" rows="5"><?=$joke->joketext ??''?></textarea>
+          </div>
+           <div class="ms-5">
+           <p>Select categories for this joke:</p>
+                <?php foreach ($categories as $category): ?>
+                    <?php if ($joke &&
+                        $joke->hasCategory($category->id)): ?>
+                        <input type="checkbox" checked name="category[]"
+                        value="<?=$category->id?>" />
+                        <?php else: ?>
+                        <input type="checkbox" name="category[]"
+                        value="<?=$category->id?>" />
+                    <?php endif; ?>
+                <label><?=$category->name?></label>
+                <?php endforeach; ?>
+            <input type="submit" name="submit" class="btn btn-primary" value="Save">
+           </div>
+        </form>
+    <?php else:?>
+        <p>You may only edit jokes that you posted.</p>
+    <?php endif; ?>
+</div>
